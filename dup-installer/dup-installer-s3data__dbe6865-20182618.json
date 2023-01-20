@@ -1,0 +1,93 @@
+{
+    "report": {
+        "pass": 0,
+        "chunk": 1,
+        "chunkPos": {
+            "l0": "final_report",
+            "l1": null,
+            "l2": null
+        },
+        "progress_perc": 100,
+        "scan_tables": 31,
+        "scan_rows": 8753,
+        "scan_cells": 54343,
+        "updt_tables": 4,
+        "updt_rows": 1356,
+        "updt_cells": 1789,
+        "errsql": [],
+        "errser": [],
+        "errkey": [],
+        "errsql_sum": 0,
+        "errser_sum": 0,
+        "errkey_sum": 0,
+        "profile_start": 1674240128.380679,
+        "profile_end": 1674240131.702764,
+        "time": "3.3221 sec.",
+        "err_all": 0,
+        "warn_all": 0,
+        "warnlist": []
+    },
+    "cTableParams": null,
+    "replaceData": [
+        {
+            "id": 0,
+            "prority": 12,
+            "scope": [
+                "___!GLOBAL!___!SCOPE!___"
+            ],
+            "type": "path",
+            "search": "\/home\/u533731823\/domains\/yournjrealtorchristineshin.com\/public_html",
+            "replace": "\/Users\/jeffshin\/Desktop\/websites\/allwebsites\/csrealestate"
+        },
+        {
+            "id": 1,
+            "prority": 12,
+            "scope": [
+                "___!GLOBAL!___!SCOPE!___"
+            ],
+            "type": "path",
+            "search": "\/home\/u533731823\/domains\/yournjrealtorchristineshin.com\/public_html",
+            "replace": "\/Users\/jeffshin\/Desktop\/websites\/allwebsites\/csrealestate"
+        },
+        {
+            "id": 2,
+            "prority": 10,
+            "scope": [
+                "___!GLOBAL!___!SCOPE!___"
+            ],
+            "type": "urlnd",
+            "search": "http:\/\/yournjrealtorchristineshin.com\/wp-content\/uploads",
+            "replace": "http:\/\/localhost:8888\/allwebsites\/csrealestate\/wp-content\/uploads"
+        },
+        {
+            "id": 3,
+            "prority": 12,
+            "scope": [
+                "___!GLOBAL!___!SCOPE!___"
+            ],
+            "type": "urlnd",
+            "search": "https:\/\/yournjrealtorchristineshin.com",
+            "replace": "http:\/\/localhost:8888\/allwebsites\/csrealestate"
+        },
+        {
+            "id": 4,
+            "prority": 12,
+            "scope": [
+                "___!GLOBAL!___!SCOPE!___"
+            ],
+            "type": "urlnd",
+            "search": "https:\/\/yournjrealtorchristineshin.com",
+            "replace": "http:\/\/localhost:8888\/allwebsites\/csrealestate"
+        },
+        {
+            "id": 5,
+            "prority": 10,
+            "scope": [
+                "___!GLOBAL!___!SCOPE!___"
+            ],
+            "type": "urlnd",
+            "search": "http:\/\/yournjrealtorchristineshin.com\/wp-content\/mu-plugins",
+            "replace": "http:\/\/localhost:8888\/allwebsites\/csrealestate\/wp-content\/mu-plugins"
+        }
+    ]
+}

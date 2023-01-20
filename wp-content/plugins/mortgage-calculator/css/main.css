@@ -1,0 +1,81 @@
+.mc-wrapper{
+    font-family: inherit;
+    font-size: 14px;
+}
+.mc-wrapper label.error{
+    color: #ff0000;
+    margin-top: 5px;
+    display: block;
+}
+.mc-wrapper label{
+    color: inherit;
+    margin-bottom: 5px;
+    display: block;
+}
+.mc-wrapper input{
+    width: 100%;
+    padding: 19px 10px;
+    height: 40px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.mc-wrapper input[type = "submit"]{
+    width: auto;
+    padding: 12px 20px;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+}
+.mc-wrapper input,
+.mc-wrapper input:focus,
+.mc-wrapper input:active{
+    outline: none;
+}
+.mc-wrapper p{
+    margin-bottom: 20px;
+    line-height: 30px;
+}
+#mc-output{
+    display: none;
+}
+#mc_chart_icon{
+    cursor: default;
+}
+
+#MLCalcClose {
+    display: none;
+    color: #F5F5F5;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Arial;
+    cursor: pointer;
+    position: absolute;
+    background: #D5D5D5;
+    border: 1px solid #D5D5D5;
+    z-index: 10002;
+    text-align: center;
+    line-height: 24px
+}
+
+#MLCalcShader {
+    background: #000000;
+    display: none;
+    position: absolute;
+    z-index: 10000;
+    margin: 0;
+    padding: 0;
+}
+
+#MLCalcHolder {
+    background: transparent;
+    display: none;
+    position: absolute;
+    z-index: 10001;
+    margin: 0;
+    padding: 0;
+    background: url(../images/ajax-loader.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center
+}

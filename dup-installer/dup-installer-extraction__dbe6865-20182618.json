@@ -1,0 +1,48 @@
+{
+    "CL_-=_-=": "DUP_Extraction",
+    "zip_filetime": "current",
+    "archive_action": "donothing",
+    "archive_engine": "ziparchivechunking",
+    "extractonStart": 1674240109.104961,
+    "chunkStart": 1674240116.483181,
+    "root_path": "\/Users\/jeffshin\/Desktop\/websites\/allwebsites\/csrealestate\/",
+    "archive_path": "\/Users\/jeffshin\/Desktop\/websites\/allwebsites\/csrealestate\/20230119_yournjrealtorchristineshin_dbe686507c6721fb5983_20230120182618_archive.zip",
+    "ajax1_error_level": 32767,
+    "dawn_status": null,
+    "archive_offset": 12074,
+    "do_chunking": false,
+    "chunkedExtractionCompleted": false,
+    "num_files": 15999,
+    "sub_folder_archive": "",
+    "max_size_extract_at_a_time": 2097152,
+    "zip_arc_chunk_notice_no": -1,
+    "zip_arc_chunk_notice_change_last_time": 0,
+    "zip_arc_chunks_extract_rates": [
+        11498564.232630583,
+        23577511.67075085
+    ],
+    "archive_items_count": 15394,
+    "filters": {
+        "CL_-=_-=": "Duplicator\\Installer\\Core\\Deploy\\Files\\Filters",
+        "files": [
+            "20230119_yournjrealtorchristineshin_dbe686507c6721fb5983_20230120182618_installer-backup.php"
+        ],
+        "dirsWithoutChilds": [],
+        "dirs": [
+            "dup-installer"
+        ]
+    },
+    "removeFilters": {
+        "CL_-=_-=": "Duplicator\\Installer\\Core\\Deploy\\Files\\Filters",
+        "files": [
+            "\/Users\/jeffshin\/Desktop\/websites\/allwebsites\/csrealestate\/20230119_yournjrealtorchristineshin_dbe686507c6721fb5983_20230120182618_installer-backup.php",
+            "\/Users\/jeffshin\/Desktop\/websites\/allwebsites\/csrealestate\/20230119_yournjrealtorchristineshin_dbe686507c6721fb5983_20230120182618_archive.zip",
+            "\/Users\/jeffshin\/Desktop\/websites\/allwebsites\/csrealestate\/installer.php",
+            "\/Users\/jeffshin\/Desktop\/websites\/allwebsites\/csrealestate\/dup-installer-bootlog__ccb58bb-20182618.txt"
+        ],
+        "dirsWithoutChilds": [],
+        "dirs": [
+            "\/Users\/jeffshin\/Desktop\/websites\/allwebsites\/csrealestate\/dup-installer"
+        ]
+    }
+}

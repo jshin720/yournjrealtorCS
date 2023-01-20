@@ -1,0 +1,310 @@
+<?php
+/**
+Plugin Name: Mortgage Calculator
+Plugin URI: https://www.mlcalc.com/
+Description: It provides an easy to use mortgage calculator widget.
+License: GPL-2.0+
+License URI: http://www.gnu.org/licenses/gpl-2.0.txt
+Text Domain: mc
+Domain Path: /languages
+Author: mlcalc.com
+Author URI: https://www.mlcalc.com/
+Version: 1.1.11
+*/
+define( 'MORTGAGE_CALCULATOR_VERSION', '1.1.11' );
+
+/**
+ *  Make sure the plugin is accessed through the appropriate channels
+ */
+defined( 'ABSPATH' ) || die;
+
+class MC_Mortgage_Calculator extends WP_Widget {
+
+    /**
+     * Register widget with WordPress.
+     */
+    public function __construct() {
+        parent::__construct(
+            'mortgage-calculator',
+            __( 'Mortgage Calculator', 'mc' ),
+            array( 'description' => __( 'It provides an easy to use mortgage calculator widget.', 'mc' ) )
+        );
+    }
+
+
+    /**
+     * Creating widget front-end - This is where the action happens.
+     *
+     * @param array $args
+     * @param array $instance
+     */
+    public function widget( $args, $instance ) {
+
+        $title = ( isset( $instance['title'] ) && ! empty( $instance['title'] ) ) ? $instance['title'] : __( 'Monthly Mortgage Payments', 'mc' );
+        $title = apply_filters( 'widget_title', $title );
+
+        $mc_total_amount_label    = ( isset( $instance['mc_total_amount_label'] ) && ! empty( $instance['mc_total_amount_label'] ) ) ? $instance['mc_total_amount_label'] : __( 'Total Amount', 'mc' );
+        $mc_down_payment_label    = ( isset( $instance['mc_down_payment_label'] ) && ! empty( $instance['mc_down_payment_label'] ) ) ? $instance['mc_down_payment_label'] : __( 'Down Payment', 'mc' );
+        $mc_interest_rate_label   = ( isset( $instance['mc_interest_rate_label'] ) && ! empty( $instance['mc_interest_rate_label'] ) ) ? $instance['mc_interest_rate_label'] : __( 'Interest Rate', 'mc' );
+        $mc_mortgage_period_label = ( isset( $instance['mc_mortgage_period_label'] ) && ! empty( $instance['mc_mortgage_period_label'] ) ) ? $instance['mc_mortgage_period_label'] : __( 'Mortgage Period', 'mc' );
+
+        // before and after widget arguments are defined by themes
+        echo $args['before_widget'];
+
+        if ( ! empty( $title ) ) {
+            echo $args['before_title'] . $title . $args['after_title'];
+        }
+
+        require_once dirname( __FILE__ ) . '/mc-layout.php';
+
+        echo $args['after_widget'];
+    }
+
+    /**
+     * Widget Backend
+     *
+     * @param array $instance
+     */
+    public function form( $instance ) {
+        $title                    = isset( $instance['title'] ) ? $instance['title'] : __( 'Mortgage Payments', 'mc' );
+        $mc_total_amount_label    = isset( $instance['mc_total_amount_label'] ) ? $instance['mc_total_amount_label'] : __( 'Total Amount', 'mc' );
+        $mc_down_payment_label    = isset( $instance['mc_down_payment_label'] ) ? $instance['mc_down_payment_label'] : __( 'Down Payment', 'mc' );
+        $mc_interest_rate_label   = isset( $instance['mc_interest_rate_label'] ) ? $instance['mc_interest_rate_label'] : __( 'Interest Rate', 'mc' );
+        $mc_mortgage_period_label = isset( $instance['mc_mortgage_period_label'] ) ? $instance['mc_mortgage_period_label'] : __( 'Mortgage Period', 'mc' );
+        ?>
+        <p>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
+                <?php echo esc_html__( 'Title', 'mc' ) . ':'; ?>
+            </label>
+            <input class="widefat"
+                   id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"
+                   name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>"
+                   type="text"
+                   value="<?php
+                   if ( isset( $title ) ) {
+                       echo esc_attr( $title );}
+                   ?>" />
+        </p>
+        <p>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'mc-total-amount' ) ); ?>">
+                <?php echo esc_html__( 'Total Amount Label', 'mc' ) . ':'; ?>
+            </label>
+            <input class="widefat"
+                   id="<?php echo esc_attr( $this->get_field_id( 'mc-total-amount' ) ); ?>"
+                   name="<?php echo esc_attr( $this->get_field_name( 'mc_total_amount_label' ) ); ?>"
+                   type="text"
+                   value="<?php
+                   if ( isset( $mc_total_amount_label ) ) {
+                       echo esc_attr( $mc_total_amount_label );}
+                   ?>" />
+        </p>
+        <p>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'mc-down-payment' ) ); ?>">
+                <?php echo esc_html__( 'Down Payment Label', 'mc' ) . ':'; ?>
+            </label>
+            <input class="widefat"
+                   id="<?php echo esc_attr( $this->get_field_id( 'mc-down-payment' ) ); ?>"
+                   name="<?php echo esc_attr( $this->get_field_name( 'mc_down_payment_label' ) ); ?>"
+                   type="text"
+                   value=" <?php
+                   if ( isset( $mc_down_payment_label ) ) {
+                       echo esc_attr( $mc_down_payment_label );}
+                   ?>" />
+        </p>
+        <p>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'mc-interest-rate' ) ); ?>">
+                <?php echo esc_html__( 'Interest Rate Label', 'mc' ) . ':'; ?>
+            </label>
+            <input class="widefat"
+                   id="<?php echo esc_attr( $this->get_field_id( 'mc-interest-rate' ) ); ?>"
+                   name="<?php echo esc_attr( $this->get_field_name( 'mc_interest_rate_label' ) ); ?>"
+                   type="text"
+                   value="<?php
+                   if ( isset( $mc_interest_rate_label ) ) {
+                       echo esc_attr( $mc_interest_rate_label );}
+                   ?>" />
+        </p>
+        <p>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'mc-mortgage-period' ) ); ?>">
+                <?php echo esc_html__( 'Mortgage Period Label', 'mc' ) . ':'; ?>
+            </label>
+            <input class="widefat"
+                   id="<?php echo esc_attr( $this->get_field_id( 'mc-mortgage-period' ) ); ?>"
+                   name="<?php echo esc_attr( $this->get_field_name( 'mc_mortgage_period_label' ) ); ?>"
+                   type="text"
+                   value="<?php
+                   if ( isset( $mc_mortgage_period_label ) ) {
+                       echo esc_attr( $mc_mortgage_period_label );}
+                   ?>" />
+        </p>
+        <?php
+    }
+
+    /**
+     * Sanitize widget form values as they are saved.
+     *
+     * @param array $new_instance
+     * @param array $old_instance
+     * @return array
+     */
+    public function update( $new_instance, $old_instance ) {
+        $instance = array();
+
+        $instance['title']                    = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
+        $instance['mc_total_amount_label']    = ( ! empty( $new_instance['mc_total_amount_label'] ) ) ? sanitize_text_field( $new_instance['mc_total_amount_label'] ) : '';
+        $instance['mc_down_payment_label']    = ( ! empty( $new_instance['mc_down_payment_label'] ) ) ? sanitize_text_field( $new_instance['mc_down_payment_label'] ) : '';
+        $instance['mc_interest_rate_label']   = ( ! empty( $new_instance['mc_interest_rate_label'] ) ) ? sanitize_text_field( $new_instance['mc_interest_rate_label'] ) : '';
+        $instance['mc_mortgage_period_label'] = ( ! empty( $new_instance['mc_mortgage_period_label'] ) ) ? sanitize_text_field( $new_instance['mc_mortgage_period_label'] ) : '';
+
+        return $instance;
+    }
+
+
+}//end class
+
+
+/**
+ * Register Mortgage Calculator
+ */
+function mc_register_mortgage_calculator() {
+    register_widget( 'MC_Mortgage_Calculator' );
+}
+add_action( 'widgets_init', 'mc_register_mortgage_calculator' );
+
+
+/**
+ * Including Settings Page and WordPress api wrapper
+ */
+require_once dirname( __FILE__ ) . '/class.settings-api.php';
+require_once dirname( __FILE__ ) . '/mc-settings.php';
+
+new MC_Mortgage_Calculator_Settings();
+
+
+/**
+ * Load plugin text domain.
+ */
+function mc_load_textdomain() {
+    load_plugin_textdomain( 'mc', false, plugin_basename( plugin_dir_path( __FILE__ ) ) . '/languages/' );
+}
+add_action( 'init', 'mc_load_textdomain' );
+
+
+/**
+ * Get the value of a settings field
+ *
+ * @param string $option settings field name
+ * @param string $section the section name this field belongs to
+ * @param string $default default text if it's not found
+ * @return mixed
+ */
+function mc_get_option( $option, $section, $default = '' ) {
+
+    $options = get_option( $section );
+
+    if ( isset( $options[ $option ] ) ) {
+        return $options[ $option ];
+    }
+
+    return $default;
+}
+
+
+/**
+ * Localize the script with new data
+ */
+function mc_localization_strings() {
+
+    $mc_output_string = '';
+
+    $mc_principal_amount   = mc_get_option( 'mc_principal_amount', 'misc_settings', esc_html__( 'Principal Amount:', 'mc' ) );
+    $mc_years              = mc_get_option( 'mc_years', 'misc_settings', esc_html__( 'Years:', 'mc' ) );
+    $mc_monthly_payment    = mc_get_option( 'mc_monthly_payment', 'misc_settings', esc_html__( 'Monthly Payment:', 'mc' ) );
+    $mc_payable_with_int   = mc_get_option( 'mc_payable_with_int', 'misc_settings', esc_html__( 'Balance Payable With Interest:', 'mc' ) );
+    $mc_total_down_payment = mc_get_option( 'mc_total_down_payment', 'misc_settings', esc_html__( 'Total With Down Payment:', 'mc' ) );
+
+    if ( ! empty( $mc_principal_amount ) ) {
+        $mc_output_string .= $mc_principal_amount . ' [mortgage_amount]' . ' LINEBREAK ';
+    }
+    if ( ! empty( $mc_years ) ) {
+        $mc_output_string .= $mc_years . ' [amortization_years]' . ' LINEBREAK ';
+    }
+
+    if ( ! empty( $mc_monthly_payment ) ) {
+        $mc_output_string .= $mc_monthly_payment . ' [mortgage_payment]' . ' LINEBREAK ';
+    }
+
+    if ( ! empty( $mc_payable_with_int ) ) {
+        $mc_output_string .= $mc_payable_with_int . ' [total_mortgage_interest]' . ' LINEBREAK ';
+    }
+
+    if ( ! empty( $mc_total_down_payment ) ) {
+        $mc_output_string .= $mc_total_down_payment . ' [total_mortgage_down_payment]' . ' LINEBREAK ';
+    }
+
+    $localization = array(
+        'mc_output_string'          => $mc_output_string,
+        'mc_currency_sign'          => mc_get_option( 'mc_currency_sign', 'mc_settings', '$' ),
+        'mc_currency_sign_position' => mc_get_option( 'mc_currency_sign_position', 'mc_settings', 'before' ),
+        'mc_thousand_separator'     => mc_get_option( 'mc_thousand_separator', 'mc_settings', ',' ),
+        'mc_decimal_separator'      => mc_get_option( 'mc_decimal_separator', 'mc_settings', '.' ),
+        'mc_number_of_decimals'     => mc_get_option( 'mc_number_of_decimals', 'mc_settings', '2' ),
+    );
+    return $localization;
+}
+
+/**
+ * Localize the script for validation
+ */
+function mc_validate_localization_strings() {
+    $localization = array(
+
+        'mc_field_required' => esc_html__( 'This field is required.', 'mc' ),
+        'mc_valid_number'   => esc_html__( 'Please enter a valid number.', 'mc' ),
+    );
+
+    return $localization;
+}
+
+
+/**
+ * Load plugin Scripts
+ */
+function mortgage_calculator_scripts() {
+
+    $mc_url = plugin_dir_url( __FILE__ );
+
+    wp_enqueue_style(
+        'mortgage-calculator',
+        $mc_url . 'css/main.css',
+        MORTGAGE_CALCULATOR_VERSION,
+        'screen'
+    );
+
+    // Enqueue the form validate JS file if it is not enqueued by the RealHomes theme.
+    if ( ! wp_script_is( 'jqvalidate' ) ) {
+        wp_enqueue_script(
+            'jqvalidate',
+            $mc_url . 'js/jquery.validate.min.js',
+            array( 'jquery' ),
+            MORTGAGE_CALCULATOR_VERSION,
+            true
+        );
+    }
+
+    wp_enqueue_script(
+        'mortgage-calculator',
+        $mc_url . 'js/mortgage-calculator.js',
+        array( 'jquery', 'jqvalidate' ),
+        MORTGAGE_CALCULATOR_VERSION,
+        true
+    );
+
+    $validation_locals = mc_validate_localization_strings();
+    wp_localize_script( 'jqvalidate', 'mc_validate_strings', $validation_locals );
+
+    // Localizing Scripts
+    $localization = mc_localization_strings();
+    wp_localize_script( 'mortgage-calculator', 'mc_strings', $localization );
+}
+add_action( 'wp_enqueue_scripts', 'mortgage_calculator_scripts' );

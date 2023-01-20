@@ -1,0 +1,65 @@
+/*Global*/
+.home-value {background:rgba(255,255,255,.8); border-radius: 2px; float:left; width: 96%; padding: 2%; margin: 25px 0; border:0;text-align:center; box-shadow: 0 0px 3px rgba(0,0,0,.2)}
+.home-value label {display:none;}
+
+/*Step 1*/
+.home-value input[type=text],.home-value input[type=email] {width: 80%;float: left;height: 50px; border-radius: 2px 0 0 2px;padding:0 10px; margin:0; border:0;box-shadow: 0 0px 2px rgba(0,0,0,.3) inset; background:#f6f6f6}
+.home-value input[type=submit] {float: left;width: 20%;border-radius: 0 2px 2px 0;height: 50px; border:0; padding:0; margin:0; background:#00a885;box-shadow: 0 1px 3px rgba(0,0,0,.1); color:#fff;}
+.home-value.busy input[type=submit] {background:#ddd url("/wp-content/plugins/home-value/static/loader.gif") center no-repeat!important; color:rgba(255,255,255,.1); box-shadow: 0 0px 2px rgba(0,0,0,.2) inset}
+
+/*Step 2*/
+.home-value .address_found input[type=text],.home-value .address_found input[type=email],.home-value .user_info_form input[type=text],.home-value .user_info_form input[type=email] {width: 50%; border:.5px solid #fff}
+.home-value .address_found input[type=submit],.home-value .street_view img,.home-value .user_info_form input[type=submit] {width: 100%!important; text-transform: uppercase; font-size: 1em; text-shadow: 0 1px 3px rgba(0,0,0,.2);font-weight: 600; letter-spacing: 2px; margin: 10px 0 0; color:#fff}
+.home-value iframe {max-width: 100%; max-height: 350px}
+.home-value h3 {text-align: center;margin: 15px 0;font-size: 1.5em;font-weight: 900;}
+.home-value p {margin: 0 0 10px; color:#888; font-weight: 100;}
+
+/*Results*/
+.home-value .show_value {background: #333; float: left; width: 100%; border-radius: 2px 2px 0 0; color: #efefef; padding: 5%; margin-top:0px;}
+.home-value .show_value p {text-align:center; margin: 0; color:#fff;}
+.home-value .show_value .hv_value {font-size: 3em;font-weight: bold; letter-spacing: -2px; line-height: .7em;background: #444;padding: 35px 0; color: #fff; margin:0;border-radius:5px 5px 0 0}
+.home-value .show_value .hv_value small {font-size: .3em; letter-spacing: 1px; font-weight: 100;}
+.home-value .show_value .hv_range {background: -webkit-linear-gradient(left,#b8312f,#41a85f); background: -o-linear-gradient(left,#b8312f,#41a85f); background: -moz-linear-gradient(left,#b8312f,#41a85f); background: linear-gradient(to right,#b8312f,#41a85f); display:block; height: 15px; width: 100%;}
+.home-value .show_value .hv_half {width: 50%; float:left;padding:10px 0}
+.home-value .show_value .hv_third {width: 33.333%; padding:25px 0; float:left;font-size: 1.8em; font-weight: bold; letter-spacing: -1px;line-height: 1em;}
+.home-value .show_value .hv_third span {font-weight: 400; color: #777; font-size: .6em;}
+.home-value .show_value .hv_low {text-align:left!important;}
+.home-value .show_value .hv_high {text-align:right!important;}
+.home-value .no_address {background:#00a885; padding: 5%; font-size: 1.2em;color:#fff; text-align:center; border-radius: 2px}
+.home-value .no_address h4 {color: #fff;margin: 0;padding:0;font-size: 1.1em;font-weight: 100;}
+.home-value .zillow_stuff {float: left; width: 100%; text-align: center; background: #fff; padding: 15px 0; border-radius: 0 0 2px 2px; font-size: .7em}
+
+/*Recent Sales*/
+.hv-recent-sales {background: #333; margin: 0; color: #aaa;text-transform: unset; letter-spacing: 0; padding: 20px 0; border-top: 1px solid rgba(255,255,255,.1); clear: both; box-shadow: 0 -1px 0 rgba(0,0,0,.4); position: relative; font-weight: 500;}
+.gm-style .gm-style-iw-c {width: 100%;max-width: 300px!important;padding:0;background:#333}
+#home_value_map {height: 450px;}
+.home-value .gm-style .gm-style-iw-d .show_value {margin-top:0}
+.gm-style .gm-style-iw-d {overflow: auto!important}
+.gm-style button img {margin: 3px!important}
+.gm-ui-hover-effect {opacity: .6;width: 20px!important; background: #aaa!important;height: 20px!important; top: 0!important; right: 0!important;}
+.gm-style .gm-style-iw-t::after {background:#333!important}
+
+@media (max-width: 767px) {
+	.home-value {font-size: .9em;}
+	.home-value input[type=text], .home-value input[type=submit] {width: 100%; border-radius: 0px; margin: 0}
+}
+
+
+/*************************************
+Admin
+*************************************/
+/*Global*/
+input[type=checkbox] {float:left; margin: 3px 8px 0 0}
+
+/*HV Left*/
+.hv-left {padding: 15px 25px;background: #fff;border: 5px dashed #555;max-width: 500px;font-size: 1.2em;line-height: 1.5;text-align: center;}
+.hv-left strong {color: #ff0000;padding: 0 2px;}
+.wp-core-ui .hv-left .button-primary {display: block;margin: 10px auto; background: #efefef; color: #555; text-shadow: 0 0; border: 1px solid #ddd; box-shadow: 0 0; padding: 3px 10px; height: auto; width: auto; text-transform: uppercase; font-weight: 400;}
+.hv-left a {background: #eb5350;color: #fff;text-decoration: none;padding: 10px 20px 11px;border-radius: 2px;font-weight: bold;text-transform: uppercase;font-size: .9em;display: inline-block;margin: 10px 0 0;}
+
+
+/*Valuation Slider*/
+.range {-webkit-appearance: none; width: 100%;height: 10px;background: #fff;outline: none; opacity: 1;-webkit-transition: .2s;transition: opacity .2s; max-width:500px; box-shadow: 0 1px 3px rgba(0,0,0,.1);}
+span#range-output {line-height: 1.7; margin: 0 0 10px; font-weight: 500; font-size: 1.4em; display: block;}
+.range::-webkit-slider-thumb {-webkit-appearance: none;appearance: none; width: 20px; height: 20px; border-radius:100%; background: #eb5350; cursor: pointer;}
+.range::-moz-range-thumb {width: 20px; height: 20px;  background: #eb5350; border-radius:100%; cursor: pointer;}
